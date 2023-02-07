@@ -1,19 +1,19 @@
 package com.example.myapplication.view.fragment
 
 import android.os.Bundle
-import android.util.Log
+import com.example.myapplication.databinding.FragmentMainBinding
+
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
-import com.example.myapplication.databinding.FragmentSearchBinding
+import com.example.myapplication.viewmodel.MainViewModel
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+
 import com.example.myapplication.network.model.club
 import com.example.myapplication.view.adapter.ClubAdapter
-import com.example.myapplication.viewmodel.MainViewModel
 
 class MainFragment : Fragment() {
 
@@ -23,16 +23,18 @@ class MainFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
 
-lateinit var binding: FragmentSearchBinding
+lateinit var binding: FragmentMainBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        binding= DataBindingUtil.inflate(
+
+
+        binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_search,
+            R.layout.fragment_main,
             container,
             false
         )
@@ -53,7 +55,7 @@ lateinit var binding: FragmentSearchBinding
         val datas = mutableListOf<club>()
 
         datas.add(club(R.drawable.ic_b1nd,"바인드","대소고aaa동아리"))
-        datas.add(club(R.drawable.logo,"두카미","몰라"))
+        datas.add(club(R.drawable.ic_logo,"두카미","몰라"))
 
         clubAdapter.datas.addAll(datas)
 

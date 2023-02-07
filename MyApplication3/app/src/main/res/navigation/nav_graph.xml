@@ -9,7 +9,7 @@
         android:id="@+id/searchFragment"
         android:name="com.example.myapplication.view.fragment.MainFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
+        tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_searchFragment_to_clubDetailFragment"
             app:destination="@id/clubDetailFragment" />
