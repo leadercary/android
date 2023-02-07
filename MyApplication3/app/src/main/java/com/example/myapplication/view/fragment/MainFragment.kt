@@ -1,5 +1,6 @@
 package com.example.myapplication.view.fragment
 
+import android.content.Context
 import android.os.Bundle
 import com.example.myapplication.databinding.FragmentMainBinding
 
@@ -13,9 +14,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.myapplication.network.model.club
+import com.example.myapplication.view.activity.MainActivity
 import com.example.myapplication.view.adapter.ClubAdapter
 
-class MainFragment : Fragment() {
+class MainFragment() : Fragment() {
+
 
     companion object {
         fun newInstance() = MainFragment()
@@ -40,11 +43,15 @@ lateinit var binding: FragmentMainBinding
         )
 
 
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.adminBtn.setOnClickListener{
+            (activity as MainActivity).switchFragment(LoginFragment())
+        }
 
         initRecycler()
     }

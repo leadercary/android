@@ -3,20 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/searchFragment">
+    app:startDestination="@id/MainFragment">
 
     <fragment
-        android:id="@+id/searchFragment"
+        android:id="@+id/MainFragment"
         android:name="com.example.myapplication.view.fragment.MainFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_searchFragment_to_clubDetailFragment"
             app:destination="@id/clubDetailFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/clubDetailFragment"
         android:name="com.example.myapplication.view.fragment.ClubDetailFragment"
         android:label="fragment_club_detail"
         tools:layout="@layout/fragment_club_detail" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.myapplication.view.fragment.LoginFragment"
+        android:label="LoginFragment" />
 </navigation>

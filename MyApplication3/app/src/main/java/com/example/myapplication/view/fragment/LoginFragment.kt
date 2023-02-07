@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentLoginBinding
+import com.example.myapplication.view.activity.MainActivity
 import com.example.myapplication.viewmodel.LoginViewModel
 
 class LoginFragment : Fragment() {
@@ -26,8 +27,16 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.loginBtn.setOnClickListener {
-            loginViewModel.login()
+        loginViewModel = LoginViewModel()
+        binding.backbtn.setOnClickListener{
+            (activity as MainActivity).switchFragment(MainFragment())
         }
+        binding.loginBtn.setOnClickListener {
+            val id = binding.idLoginEdit.text.toString()
+            val pw = binding.passwordLoginEdit.text.toString()
+            loginViewModel.login(id,pw)
+        }
+
+
     }
 }
