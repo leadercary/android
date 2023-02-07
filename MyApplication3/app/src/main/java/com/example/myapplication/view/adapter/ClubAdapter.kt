@@ -6,14 +6,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.myapplication.R
 import com.example.myapplication.databinding.ItemClubBinding
-import com.example.myapplication.network.model.club
+import com.example.myapplication.network.model.Club
 
 
 class ClubAdapter(private val context: Context) :
     RecyclerView.Adapter<ClubAdapter.ClubViewHolder>() {
-    var datas = mutableListOf<club>()
+    var datas = mutableListOf<Club>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClubViewHolder {
         val view = ItemClubBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -30,7 +29,7 @@ class ClubAdapter(private val context: Context) :
     }
 
     inner class ClubViewHolder(private val binding: ItemClubBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: club) {
+        fun bind(item: Club) {
             binding.root.setOnClickListener { }
             binding.tvTitle.text = item.title
             Glide.with(context)

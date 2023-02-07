@@ -1,6 +1,6 @@
 package com.example.myapplication.network.model
 
-data class LoginData(
+data class LoginDto(
     val identity : String,
     val password : String?,
     val remember : String?
