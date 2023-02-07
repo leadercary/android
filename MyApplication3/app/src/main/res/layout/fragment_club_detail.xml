@@ -74,7 +74,7 @@
     <View
         android:layout_width="64dp"
         android:layout_height="62dp"
-        android:background="@drawable/ic_half_logo"
+        android:background="@drawable/ic_top_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
