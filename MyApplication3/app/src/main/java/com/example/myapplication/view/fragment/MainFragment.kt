@@ -54,6 +54,7 @@ lateinit var binding: FragmentMainBinding
         }
 
         initRecycler()
+        initFreeRecycler()
     }
 
     private fun initRecycler() {
@@ -61,16 +62,36 @@ lateinit var binding: FragmentMainBinding
 
         val datas = mutableListOf<club>()
 
-        datas.add(club(R.drawable.ic_b1nd,"바인드","대소고aaa동아리"))
-        datas.add(club(R.drawable.ic_logo,"두카미","몰라"))
-
+        datas.add(club(R.drawable.ic_b1nd,"바인드","학교, 학생, 학부모를 잇다. B1nd"))
+        datas.add(club(R.drawable.ic_ducami,"두카미","대소고 공식 교육 봉사 동아리"))
+        datas.add(club(R.drawable.ic_3d,"삼디","3d 프린터 = 삼디, 삼디 = 3d 프린터"))
+        datas.add(club(R.drawable.ic_alt,"알트","학교 홍보 동아리"))
+        datas.add(club(R.drawable.ic_today,"오늘 하루","오늘 하루는 어땠나요?"))
+        datas.add(club(R.drawable.ic_cns,"CNS","입학 원서 사이트 개발 동아리"))
         clubAdapter.datas.addAll(datas)
 
         binding.rvClub.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         clubAdapter.notifyDataSetChanged()
 
         binding.rvClub.adapter = clubAdapter
-
     }
+
+
+    private fun initFreeRecycler() {
+        val clubAdapter = ClubAdapter(requireContext())
+
+        val freeDatas = mutableListOf<club>()
+
+        freeDatas.add(club(R.drawable.ic_ind,"인디","디자인 동아리"))
+        freeDatas.add(club(R.drawable.ic_badminton,"배드민턴","대소고 배드민턴 동아리"))
+        freeDatas.add(club(R.drawable.ic_bicycle,"자전거","자전거 동아리"))
+        clubAdapter.datas.addAll(freeDatas)
+
+        binding.rvFreeClub.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        clubAdapter.notifyDataSetChanged()
+
+        binding.rvFreeClub.adapter = clubAdapter
+    }
+
 
 }
