@@ -1,6 +1,6 @@
 package com.example.myapplication.network
 
-import com.example.myapplication.network.service.LoginRetrofitService
+import com.example.myapplication.network.service.LoginService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
@@ -15,6 +15,6 @@ object RetrofitClient {
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
 
-    val loginService: LoginRetrofitService = retrofit.create(LoginRetrofitService::class.java)
+    val loginService: LoginService = retrofit.create(LoginService::class.java)
 
 }

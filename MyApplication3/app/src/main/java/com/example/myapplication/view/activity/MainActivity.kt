@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     fun switchFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(R.anim.fadein,R.anim.fadeout)
         transaction.replace(R.id.frame_fragment, fragment)
         transaction.addToBackStack(null)
         transaction.commit()

@@ -1,13 +1,11 @@
 package com.example.myapplication.view.fragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentLoginBinding
@@ -18,7 +16,6 @@ class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
     private lateinit var loginViewModel: LoginViewModel
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

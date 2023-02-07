@@ -15,18 +15,20 @@ import retrofit2.Response
 class LoginViewModel : ViewModel() {
 
     val changer = MutableLiveData<Boolean>()
+    val result = MutableLiveData<String>()
+
 
     fun login(id:Any, pw:Any){
         Log.d("euya", id.toString())
         Log.d("euya", pw.toString())
-        RetrofitClient.loginService.signIn(LoginData(id.toString(),pw.toString(),null)).enqueue(object : retrofit2.Callback<String> {
+        RetrofitClient.loginService.signIn(result.value,LoginData(id.toString(),pw.toString(),null)).enqueue(object : retrofit2.Callback<String> {
             override fun onResponse(
                 call: Call<String>,
                 response: Response<String>
             ) {
                 if (response.isSuccessful) {
-                    val result = response.body()
-                    Log.d("euya","로그인성공 ${result}")
+                    result.value = response.body()
+                    Log.d("euya","로그인성공 ${result.value}")
                     changer.value = true
                 }
             }
