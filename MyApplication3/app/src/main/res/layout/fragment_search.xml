@@ -1,13 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools">
+
+    <data></data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragment.SearchFragment">
+    tools:context=".view.activity.MainActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:background="@drawable/bg_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/tool_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:text="@string/login"
+            app:layout_constraintBottom_toTopOf="@+id/bg_search"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="15dp"
+            />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/bg_search"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="25dp"
+            android:background="@drawable/bg_search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="25dp"
+            android:layout_marginBottom="10dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_search"
+            app:layout_constraintEnd_toEndOf="@+id/bg_search"
+            app:layout_constraintTop_toTopOf="@+id/bg_search"
+            app:layout_constraintBottom_toBottomOf="@id/bg_search"
+            android:layout_marginEnd="15dp"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <TextView
+        android:id="@+id/tv_club"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="창체 동아리"
+        app:layout_constraintTop_toBottomOf="@+id/tool_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_club"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
-
-</FrameLayout>
+        android:layout_height="300dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_club"
+        android:layout_marginTop="15dp"
+        />
+    <TextView
+        android:id="@+id/tv_free_club"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="자율 동아리"
+        app:layout_constraintTop_toBottomOf="@+id/rv_club"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_free_club"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_free_club"
+        android:layout_marginTop="15dp"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="login"><u>관리자로 시작</u></string>
 </resources>

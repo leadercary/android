@@ -2,6 +2,6 @@ package com.example.myapplication.viewmodel
 
 import androidx.lifecycle.ViewModel
 
-class SearchViewModel : ViewModel() {
+class MainViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }
