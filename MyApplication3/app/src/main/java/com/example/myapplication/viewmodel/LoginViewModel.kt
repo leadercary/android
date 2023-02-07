@@ -14,7 +14,7 @@ import retrofit2.Response
 
 class LoginViewModel : ViewModel() {
 
-
+    val changer = MutableLiveData<Boolean>()
 
     fun login(id:Any, pw:Any){
         Log.d("euya", id.toString())
@@ -25,8 +25,9 @@ class LoginViewModel : ViewModel() {
                 response: Response<String>
             ) {
                 if (response.isSuccessful) {
-                    var result = response.body()
+                    val result = response.body()
                     Log.d("euya","로그인성공 ${result}")
+                    changer.value = true
                 }
             }
             override fun onFailure(call: Call<String>, t: Throwable) {

@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         transaction.commit()
     }
 
+
     override fun onBackPressed() {
         for (fragment in supportFragmentManager.fragments) {
             if (fragment.isVisible) {
@@ -45,4 +46,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 }

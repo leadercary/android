@@ -13,6 +13,6 @@ class AdminMainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_admin_search, container, false)
+        return inflater.inflate(R.layout.fragment_admin_main, container, false)
     }
 }

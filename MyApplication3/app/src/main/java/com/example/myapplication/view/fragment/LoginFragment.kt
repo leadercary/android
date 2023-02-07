@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentLoginBinding
 import com.example.myapplication.view.activity.MainActivity
@@ -16,6 +18,7 @@ class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
     private lateinit var loginViewModel: LoginViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,15 +31,19 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loginViewModel = LoginViewModel()
-        binding.backbtn.setOnClickListener{
+        binding.backbtn.setOnClickListener {
             (activity as MainActivity).switchFragment(MainFragment())
         }
         binding.loginBtn.setOnClickListener {
-            val id = binding.idLoginEdit.text.toString()
-            val pw = binding.passwordLoginEdit.text.toString()
-            loginViewModel.login(id,pw)
+            val id = binding.idLoginEdit.text
+            val pw = binding.passwordLoginEdit.text
+            loginViewModel.login(id, pw)
         }
-
-
+        loginViewModel.changer.observe(viewLifecycleOwner, Observer {
+            if (loginViewModel.changer.value == true){
+                (activity as MainActivity).switchFragment(AdminMainFragment())
+                loginViewModel.changer.value = false
+            }
+        })
     }
 }
