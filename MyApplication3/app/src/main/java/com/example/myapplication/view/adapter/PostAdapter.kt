@@ -38,6 +38,8 @@ class PostAdapter(private val context: Context) :
 
             }
 
+
+
             binding.title.text= item.title
             //Glide.with(context)
             //    .load(item.logo)

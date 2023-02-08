@@ -23,30 +23,13 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/gallery"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/ic_gallery"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_2" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="68dp"
-        android:background="@drawable/ic_element_plus"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_2" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/ic_text"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_2"
-        app:layout_constraintEnd_toEndOf="@+id/rectangle_2"
         app:layout_constraintTop_toTopOf="@+id/rectangle_2" />
 
     <View
@@ -112,6 +95,14 @@
         app:layout_constraintBottom_toTopOf="@id/rectangle_2"
         app:layout_constraintTop_toBottomOf="@id/writename" />
 
+    <ImageView
+        android:id="@+id/img_gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/rectangle_2"
+        android:layout_margin="10dp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

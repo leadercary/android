@@ -3,7 +3,9 @@ package com.example.myapplication.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.myapplication.R
 import com.example.myapplication.network.RetrofitClient
+import com.example.myapplication.network.model.Club
 import com.example.myapplication.network.model.Post
 import com.example.myapplication.network.model.text
 import retrofit2.Call
@@ -21,7 +23,11 @@ class SearchViewModel : ViewModel() {
                 response: Response<List<Post>>
             ) {
                 if (response.isSuccessful) {
-                    itemList.value = response.body() ?: emptyList()
+                    val imageList = mutableListOf<Int>()
+                    for(i in response.body()!!.indices) {
+
+                    }
+                    itemList.postValue(response.body())
                 }
             }
 
@@ -29,5 +35,8 @@ class SearchViewModel : ViewModel() {
             }
 
         })
+    }
+    fun getImage(indices: List<Int>) {
+
     }
 }

@@ -1,26 +1,39 @@
 package com.example.myapplication.view.fragment
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
+import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.provider.Contacts.Intents.Insert.ACTION
+import android.provider.ContactsContract.Intents.Insert.ACTION
+import android.provider.MediaStore
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
 import com.example.myapplication.viewmodel.AddViewModel
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentAddBinding
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.File
 
 class AddFragment : Fragment() {
+    private val REQUEST_CODE = 2000
     private lateinit var binding: FragmentAddBinding
+    private lateinit var addViewModel: AddViewModel
     companion object {
         fun newInstance() = AddFragment()
     }
-
-    private lateinit var viewModel: AddViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,36 +45,35 @@ class AddFragment : Fragment() {
             container,
             false
         )
-        binding.someId.setOnClickListener {
-            // Registers a photo picker activity launcher in single-select mode.
-            val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
-                // Callback is invoked after the user selects a media item or closes the
-                // photo picker.
-                if (uri != null) {
-                    Log.d("PhotoPicker", "Selected URI: $uri")
-                } else {
-                    Log.d("PhotoPicker", "No media selected")
-                }
-            }
+        addViewModel = AddViewModel()
+        binding.gallery.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.setDataAndType(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                "image/*"
+            )
+            startActivityForResult(intent, REQUEST_CODE)
 
-// Include only one of the following calls to launch(), depending on the types
-// of media that you want to allow the user to choose from.
-
-// Launch the photo picker and allow the user to choose images and videos.
-            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageAndVideo))
-
-// Launch the photo picker and allow the user to choose only images.
-            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-
-// Launch the photo picker and allow the user to choose only videos.
-            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.VideoOnly))
-
-// Launch the photo picker and allow the user to choose only images/videos of a
-// specific MIME type, such as GIFs.
-            val mimeType = "image/gif"
-            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.SingleMimeType(mimeType)))
         }
-        return inflater.inflate(R.layout.fragment_add, container, false)
+
+        binding.someId.setOnClickListener {
+            addViewModel.imagePost()
+        }
+
+        return binding.root
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null && data.data != null) {
+            var selectedImageUri: Uri = data.data!!
+            val file = File(selectedImageUri.path)
+            Log.d("FILE", file.name)
+            var requestBody : RequestBody = RequestBody.create(MediaType.parse("image/*"),file)
+            var body : MultipartBody.Part = MultipartBody.Part.createFormData("image", file.name,requestBody)
+            addViewModel.body.postValue(body)
+            binding.imgGallery.setImageURI(selectedImageUri)
+        }
     }
 
 }
