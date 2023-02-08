@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.network.RetrofitClient
 import com.example.myapplication.network.model.LoginDto
+import com.example.myapplication.view.fragment.AdminMainFragment
+import com.example.myapplication.view.fragment.LoginFragment
 import retrofit2.Call
 import retrofit2.Response
 
@@ -27,6 +29,7 @@ class LoginViewModel : ViewModel() {
                     result.value = response.body()
                     Log.d("euya","로그인성공 ${result.value}")
                     changer.value = true
+                    LoginFragment().saveToken(result.value)
                 }
             }
             override fun onFailure(call: Call<String>, t: Throwable) {

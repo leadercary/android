@@ -1,6 +1,8 @@
 package com.example.myapplication.view.fragment
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import com.example.myapplication.databinding.FragmentMainBinding
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +13,7 @@ import com.example.myapplication.viewmodel.MainViewModel
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.network.model.App.Companion.prefs
 import com.example.myapplication.network.model.Club
 import com.example.myapplication.view.activity.MainActivity
 import com.example.myapplication.view.adapter.ClubAdapter
@@ -41,7 +44,11 @@ lateinit var binding: FragmentMainBinding
         super.onViewCreated(view, savedInstanceState)
         mainViewModel = MainViewModel()
         binding.adminBtn.setOnClickListener{
-            (activity as MainActivity).switchFragment(LoginFragment(), null)
+            if (prefs.token.isNullOrEmpty()){
+                (activity as MainActivity).switchFragment(LoginFragment(), null)
+            } else {
+                (activity as MainActivity).switchFragment(AdminMainFragment(), null)
+            }
         }
         binding.bgSearch.setOnClickListener {
             (activity as MainActivity).switchFragment(SearchFragment(), null)

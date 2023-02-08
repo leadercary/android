@@ -1,5 +1,6 @@
 package com.example.myapplication.view.fragment
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentLoginBinding
+import com.example.myapplication.network.model.App.Companion.prefs
 import com.example.myapplication.view.activity.MainActivity
 import com.example.myapplication.viewmodel.LoginViewModel
 
@@ -42,5 +44,9 @@ class LoginFragment : Fragment() {
                 loginViewModel.changer.value = false
             }
         })
+    }
+
+    fun saveToken(euya: String?){
+        prefs.token = euya
     }
 }
