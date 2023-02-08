@@ -9,14 +9,13 @@ import android.view.ViewGroup
 import com.example.myapplication.R
 import com.example.myapplication.viewmodel.MainViewModel
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.network.model.Club
 import com.example.myapplication.view.activity.MainActivity
 import com.example.myapplication.view.adapter.ClubAdapter
 
 class MainFragment() : Fragment() {
-
-
     companion object {
         fun newInstance() = MainFragment()
     }
@@ -40,18 +39,23 @@ lateinit var binding: FragmentMainBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mainViewModel = MainViewModel()
         binding.adminBtn.setOnClickListener{
-            (activity as MainActivity).switchFragment(LoginFragment())
+            (activity as MainActivity).switchFragment(LoginFragment(), null)
         }
         binding.bgSearch.setOnClickListener {
-            (activity as MainActivity).switchFragment(SearchFragment())
+            (activity as MainActivity).switchFragment(SearchFragment(), null)
         }
         initRecycler()
         initFreeRecycler()
+        mainViewModel.onclick.observe(viewLifecycleOwner, Observer {
+            (activity as MainActivity).switchFragment(ClubDetailFragment(), mainViewModel.onclick.value)
+            mainViewModel.onclick.postValue("")
+        })
     }
 
     private fun initRecycler() {
-        val clubAdapter = ClubAdapter(requireContext())
+        val clubAdapter = ClubAdapter(requireContext(), mainViewModel)
 
         val datas = mutableListOf<Club>()
 
@@ -70,7 +74,7 @@ lateinit var binding: FragmentMainBinding
     }
 
     private fun initFreeRecycler() {
-        val clubAdapter = ClubAdapter(requireContext())
+        val clubAdapter = ClubAdapter(requireContext(), mainViewModel)
 
         val freeDatas = mutableListOf<Club>()
 

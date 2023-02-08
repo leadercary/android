@@ -33,14 +33,18 @@ class PostAdapter(private val context: Context) :
 
     inner class PostViewHolder(private val binding: ItemPostBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Post) {
-            binding.root.setOnClickListener { }
+
+            binding.root.setOnClickListener {
+
+            }
+
             binding.title.text= item.title
             //Glide.with(context)
             //    .load(item.logo)
             //    .into(binding.icProfile)
             binding.postDetail.text = item.detail
             binding.viewer.text = item.view.toString()
-            binding.postdate.text=item.create_time
+            binding.postdate.text=item.createTime.toString()
         }
     }
 }

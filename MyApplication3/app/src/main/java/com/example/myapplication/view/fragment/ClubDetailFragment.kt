@@ -22,4 +22,9 @@ class ClubDetailFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_club_detail, container, false)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val club = arguments?.getString("club")
+    }
 }

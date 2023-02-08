@@ -1,7 +1,9 @@
 package com.example.myapplication.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class MainViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+    val onclick = MutableLiveData<String>()
+
 }

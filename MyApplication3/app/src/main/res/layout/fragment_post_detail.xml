@@ -1,100 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout>
 
-    <ScrollView
+    <data></data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <View
-                android:id="@+id/rectangle_2"
-                android:layout_width="wrap_content"
-                android:layout_height="55dp"
-                android:background="@drawable/bg_toolbar"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <View
-                android:id="@+id/backBtn"
-                android:layout_width="17dp"
-                android:layout_height="26dp"
-                android:background="@drawable/ic_back"
-                app:layout_constraintBottom_toBottomOf="@+id/rectangle_2"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="15dp"
-                app:layout_constraintTop_toTopOf="@+id/rectangle_2" />
+                <View
+                    android:id="@+id/rectangle_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:background="@drawable/bg_toolbar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <View
-                android:id="@+id/profile"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/ic_b1nd"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rectangle_2"
-                />
+                <View
+                    android:id="@+id/backBtn"
+                    android:layout_width="17dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="15dp"
+                    android:background="@drawable/ic_back"
+                    app:layout_constraintBottom_toBottomOf="@+id/rectangle_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/rectangle_2" />
 
-            <TextView
-                android:id="@+id/clubName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:gravity="top"
-                android:layout_marginTop="19dp"
-                android:text="B1ND"
-                android:textAppearance="@style/name"
-                app:layout_constraintStart_toEndOf="@+id/profile"
-                app:layout_constraintTop_toBottomOf="@+id/rectangle_2" />
+                <View
+                    android:id="@+id/profile"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/ic_b1nd"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rectangle_2" />
 
-            <TextView
-                android:id="@+id/postdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="top"
-                android:layout_marginTop="3dp"
-                android:text="2023.02.07"
-                android:textAppearance="@style/date"
-                app:layout_constraintStart_toStartOf="@+id/clubName"
-                app:layout_constraintTop_toBottomOf="@+id/clubName" />
+                <TextView
+                    android:id="@+id/clubName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="19dp"
+                    android:gravity="top"
+                    android:text="B1ND"
+                    android:textAppearance="@style/name"
+                    app:layout_constraintStart_toEndOf="@+id/profile"
+                    app:layout_constraintTop_toBottomOf="@+id/rectangle_2" />
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="285dp"
-                android:layout_height="12dp"
-                android:gravity=""
-                android:text="[ 중요 ] 대소고 3D 모델링 및 프린팅 동아리, 삼디에서 6기를 모집합니다. "
-                android:textAppearance="@style/name"
-                android:layout_marginTop="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/postdate" />
+                <TextView
+                    android:id="@+id/postdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:gravity="top"
+                    android:text="2023.02.07"
+                    android:textAppearance="@style/date"
+                    app:layout_constraintStart_toStartOf="@+id/clubName"
+                    app:layout_constraintTop_toBottomOf="@+id/clubName" />
 
-            <View
-                android:id="@+id/img"
-                android:layout_width="170dp"
-                android:layout_height="245dp"
-                android:layout_marginStart="15dp"
-                android:background="@drawable/ic_b1nd"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title"
-                android:layout_marginTop="30dp"
-                />
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="285dp"
+                    android:layout_height="12dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity=""
+                    android:text="[ 중요 ] 대소고 3D 모델링 및 프린팅 동아리, 삼디에서 6기를 모집합니다. "
+                    android:textAppearance="@style/name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/postdate" />
 
-            <TextView
-                android:id="@+id/detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="이 편지는 영국에서 최초로 시작돼 일 년에 지구 한 바퀴를 돌면서 받는 사람에게 행운을 가져다주었습니다.
+                <View
+                    android:id="@+id/img"
+                    android:layout_width="170dp"
+                    android:layout_height="245dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/ic_b1nd"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title" />
+
+                <TextView
+                    android:id="@+id/detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="이 편지는 영국에서 최초로 시작돼 일 년에 지구 한 바퀴를 돌면서 받는 사람에게 행운을 가져다주었습니다.
 
 지금 당신에게 옮겨진 이 편지는 4일 안에 당신 곁을 떠나야 합니다.
 
@@ -112,15 +114,15 @@
 
 이 편지를 보내면 7년간 행운이 있을 것이고 그렇지 않으면 3년간 불행이 있을 것입니다.
 "
-                android:textAppearance="@style/name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img" />
+                    android:textAppearance="@style/name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+        </ScrollView>
 
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -27,10 +27,17 @@ class MainActivity : AppCompatActivity() {
         transaction.commit()
     }
 
-    fun switchFragment(fragment: Fragment) {
+    fun switchFragment(fragment: Fragment, name: String?) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.setCustomAnimations(R.anim.fadein,R.anim.fadeout)
-        transaction.replace(R.id.frame_fragment, fragment)
+        if(!(name.isNullOrBlank())){
+            transaction.replace(R.id.frame_fragment, fragment.apply {
+                arguments = Bundle().apply {
+                    putString("club", name)
+                } })
+        } else {
+            transaction.replace(R.id.frame_fragment, fragment)
+        }
         transaction.addToBackStack(null)
         transaction.commit()
     }
@@ -41,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 if (fragment is MainFragment) {
                     finishAffinity()
                 } else if(fragment is ClubDetailFragment){
-                    switchFragment(MainFragment())
+                    switchFragment(MainFragment(), null)
                 }
             }
         }

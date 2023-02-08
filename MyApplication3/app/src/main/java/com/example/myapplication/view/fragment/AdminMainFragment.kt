@@ -25,7 +25,7 @@ class AdminMainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.fabAdminMain.setOnClickListener {
-            (activity as MainActivity).switchFragment(AddFragment())
+            (activity as MainActivity).switchFragment(AddFragment(), null)
         }
     }
 }

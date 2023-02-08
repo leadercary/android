@@ -29,7 +29,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         loginViewModel = LoginViewModel()
         binding.backbtn.setOnClickListener {
-            (activity as MainActivity).switchFragment(MainFragment())
+            (activity as MainActivity).switchFragment(MainFragment(), null)
         }
         binding.loginBtn.setOnClickListener {
             val id = binding.idLoginEdit.text
@@ -38,7 +38,7 @@ class LoginFragment : Fragment() {
         }
         loginViewModel.changer.observe(viewLifecycleOwner, Observer {
             if (loginViewModel.changer.value == true){
-                (activity as MainActivity).switchFragment(AdminMainFragment())
+                (activity as MainActivity).switchFragment(AdminMainFragment(), null)
                 loginViewModel.changer.value = false
             }
         })

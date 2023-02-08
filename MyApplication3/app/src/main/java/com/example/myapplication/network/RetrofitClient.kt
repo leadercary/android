@@ -12,7 +12,7 @@ object RetrofitClient {
         .setLenient()
         .create()
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.175.52:8080/")
+        .baseUrl("http://10.80.161.211:8080/")
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
     val postService: PostService = retrofit.create(PostService::class.java)

@@ -1,12 +1,13 @@
 package com.example.myapplication.view.fragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentSearchBinding
 import com.example.myapplication.viewmodel.SearchViewModel
 
 class SearchFragment : Fragment() {
@@ -15,19 +16,30 @@ class SearchFragment : Fragment() {
         fun newInstance() = SearchFragment()
     }
 
-    private lateinit var viewModel: SearchViewModel
+    private lateinit var searchViewModel: SearchViewModel
+
+    lateinit var binding: FragmentSearchBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        binding = DataBindingUtil.inflate(
+        inflater,
+        R.layout.fragment_search,
+        container,
+        false
+    )
+        searchViewModel= SearchViewModel()
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnSearch.setOnClickListener {
+            searchViewModel.keyword.postValue(binding.etSearch.text.toString())
+            searchViewModel.searchPost()
+        }
     }
 
 }

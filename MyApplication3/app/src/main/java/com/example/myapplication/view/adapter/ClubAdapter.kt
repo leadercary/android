@@ -8,10 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.databinding.ItemClubBinding
 import com.example.myapplication.network.model.Club
+import com.example.myapplication.viewmodel.MainViewModel
+import com.example.myapplication.viewmodel.SearchViewModel
 
 
-class ClubAdapter(private val context: Context) :
+class ClubAdapter(private val context: Context, vm: MainViewModel) :
     RecyclerView.Adapter<ClubAdapter.ClubViewHolder>() {
+    private val mainViewModel = vm
     var datas = mutableListOf<Club>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClubViewHolder {
@@ -30,7 +33,9 @@ class ClubAdapter(private val context: Context) :
 
     inner class ClubViewHolder(private val binding: ItemClubBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Club) {
-            binding.root.setOnClickListener { }
+            binding.root.setOnClickListener {
+                mainViewModel.onclick.postValue(item.title)
+            }
             binding.tvTitle.text = item.title
             Glide.with(context)
                 .load(item.logo)
