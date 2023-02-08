@@ -14,7 +14,8 @@ class SearchViewModel : ViewModel() {
     val itemList = MutableLiveData<List<Post>>()
     fun searchPost() {
         Log.d("TAG", keyword.value.toString())
-        RetrofitClient.postService.search(keyword.value.toString()).enqueue(object : retrofit2.Callback<List<Post>> {
+        RetrofitClient.postService.search(keyword.value.toString())
+            .enqueue(object : retrofit2.Callback<List<Post>> {
             override fun onResponse(
                 call: Call<List<Post>>,
                 response: Response<List<Post>>

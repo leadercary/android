@@ -1,5 +1,6 @@
 package com.example.myapplication.network
 
+import com.example.myapplication.network.service.ClubService
 import com.example.myapplication.network.service.LoginService
 import com.example.myapplication.network.service.PostService
 import com.google.gson.Gson
@@ -15,6 +16,7 @@ object RetrofitClient {
         .baseUrl("http://10.80.161.211:8080/")
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
+    val clubService: ClubService = retrofit.create(ClubService::class.java)
     val postService: PostService = retrofit.create(PostService::class.java)
     val loginService: LoginService = retrofit.create(LoginService::class.java)
 
