@@ -67,12 +67,23 @@ class AddFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null && data.data != null) {
             var selectedImageUri: Uri = data.data!!
-            val file = File(selectedImageUri.path)
-            Log.d("FILE", file.name)
-            var requestBody : RequestBody = RequestBody.create(MediaType.parse("image/*"),file)
-            var body : MultipartBody.Part = MultipartBody.Part.createFormData("image", file.name,requestBody)
-            addViewModel.body.postValue(body)
-            binding.imgGallery.setImageURI(selectedImageUri)
+            var filepath = MediaStore.Images.Media.DATA
+            var cursor = requireActivity().contentResolver.query(selectedImageUri,
+                arrayOf(filepath), null ,null, null)
+            cursor!!.moveToFirst()
+
+            var culumnIndex = cursor.getColumnIndex(filepath[0].toString())
+
+
+
+            var picpath = cursor.getString(culumnIndex)
+            cursor.close()
+            val file = Uri.fromFile(File(picpath))
+            Log.d("TAG", file.toString())
+//            var requestBody : RequestBody = RequestBody.create(MediaType.parse("image/*"),file)
+//            var body : MultipartBody.Part = MultipartBody.Part.createFormData("image", file.name,requestBody)
+//            addViewModel.body.postValue(body)
+//            binding.imgGallery.setImageURI(selectedImageUri)
         }
     }
 
